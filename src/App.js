@@ -4,18 +4,18 @@ import Sidebar from './components/Sidebar';
 import TopNav from './components/TopNav';
 
 function App() {
-  const findOverflows = () => {
-    const documentWidth = document.documentElement.offsetWidth;
+  // const findOverflows = () => {
+  //   const documentWidth = document.documentElement.offsetWidth;
 
-    document.querySelectorAll('*').forEach(element => {
-      const box = element.getBoundingClientRect();
+  //   document.querySelectorAll('*').forEach(element => {
+  //     const box = element.getBoundingClientRect();
 
-      if (box.left < 0 || box.right > documentWidth) {
-        console.log(element);
-        element.style.border = '1px solid red';
-      }
-    });
-  };
+  //     if (box.left < 0 || box.right > documentWidth) {
+  //       console.log(element);
+  //       element.style.border = '1px solid red';
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     // findOverflows()
