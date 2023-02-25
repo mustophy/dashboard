@@ -115,7 +115,7 @@ function App() {
             </div>
           </div>
           <div className="sm:col-span-3 w-full mt-6 sm:mt-0">
-            <div className="h-[280px] flex flex-col border-b border-gray-600 justify-center pl-3 sm:pr-6">
+            <div className="h-[280px] flex flex-col border-b border-gray-600 justify-center px-3 sm:pr-6">
               <div className="flex">
                 <div className='h-[250px] bg-[#fad898] rounded-l-lg w-[75%]'>
                   <p className='text-black text-3xl pt-6 pl-4 sm:pl-10 font-bold'>Experience True <br /> DIgital Banking <br /> Experience</p>

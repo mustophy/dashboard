@@ -7,7 +7,7 @@ const Sidebar = () => {
         setShowSidebar(!showSidebar)
     }
     return (
-        <div className={`transition-all duration-300 sm:translate-x-0 w-[250px] fixed top-0 left-0 pl-6 sm:pl-10 pt-6 sm:pt-10  ${showSidebar ? 'bg-[#0b0a0f]' : 'bg-none'} sm:bg-[#0b0a0f] h-[100vh]`}>
+        <div className={`transition-all duration-300 sm:translate-x-0 w-[250px] ${showSidebar ? 'fixed' : 'absolute'} top-0 left-0 pl-6 sm:pl-10 pt-6 sm:pt-10  ${showSidebar ? 'bg-[#0b0a0f]' : 'bg-none'} sm:bg-[#0b0a0f] h-[100vh]`}>
             <div className="relative w-fit mb-20 flex items-center">
                 <div className="sm:hidden">
                     <svg onClick={toggleSidebar} className={`${showSidebar && 'hidden'} cursor-pointer sm:hidden scale-[1.2]`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
