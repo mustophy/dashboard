@@ -1,8 +1,25 @@
+import { useEffect } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import TopNav from './components/TopNav';
 
 function App() {
+  const findOverflows = () => {
+    const documentWidth = document.documentElement.offsetWidth;
+
+    document.querySelectorAll('*').forEach(element => {
+      const box = element.getBoundingClientRect();
+
+      if (box.left < 0 || box.right > documentWidth) {
+        console.log(element);
+        element.style.border = '1px solid red';
+      }
+    });
+  };
+
+  useEffect(() => {
+    // findOverflows()
+  }, [])
   return (
     <div className="App">
       <Sidebar />
@@ -11,10 +28,10 @@ function App() {
         <div className='flex flex-col items-center justify-center mt-10 border-b border-gray-600 pb-10'>
           <p className='text-lg'>Total account balance</p>
           <h2 className='mt-4 text-5xl text-white font-bold space-x-6'>$50,489.93</h2>
-          <div className="flex mt-6 justify-center px-6">
-            <div className='w-[200px] max-w-[45%] border-b-[5px] rounded-md border-[#5d88e6]'></div>
-            <div className='w-[120px] max-w-[35%] border-b-[5px] rounded-md border-[#eba311]'></div>
-            <div className='w-[70px] max-w-[20%] border-b-[5px] rounded-md border-gray-400'></div>
+          <div className="flex mt-6 justify-center w-full sm:px-6">
+            <div className='sm:w-[200px] w-[40%] border-b-[5px] rounded-l-md border-[#5d88e6]'></div>
+            <div className='sm:w-[120px] w-[30%] border-b-[5px] border-[#eba311]'></div>
+            <div className='sm:w-[70px] w-[15%] border-b-[5px] rounded-r-md border-gray-400'></div>
           </div>
           <div className="flex gap-x-9 sm:gap-x-14 mt-6">
             <div className="flex items-center">
@@ -33,7 +50,7 @@ function App() {
               <p className="text-white ml-2 sm:ml-0">$25,539</p>
             </div>
           </div>
-          <div className="rounded-lg p-3 bg-[#1a1b20] flex mt-10">
+          <div className="rounded-lg p-3 bg-[#1a1b20] flex mt-10 cursor-pointer">
             <p> Press </p>
             <span className='px-2 mx-3 h-fit rounded-md bg-white text-black'>/</span>
             <p>to perform your first transaction</p>
@@ -45,11 +62,11 @@ function App() {
               <div className='flex justify-between items-center pt-6'>
                 <p className="text-white font-semibold text-xl">Beneficiaries</p>
                 <div className='flex items-center'>
-                  <p className="text-[#577bbe] mr-2">View all</p>
+                  <p className="text-[#577bbe] mr-2 cursor-pointer">View all</p>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="#577bbe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
               </div>
-              <div className="flex justify-center flex-wrap gap-x-8 gap-y-8 mt-10 mb-10 sm:mb-0">
+              <div className="flex justify-center sm:justify-between flex-wrap gap-x-8 gap-y-8 mt-10 mb-10 sm:mb-0">
                 <div className='flex flex-col justify-center items-center'>
                   <div className="h-20 w-20 rounded-full bg-yellow-900"></div>
                   <p className='text-white mt-3 text-sm mb-1'>Jenny Wilson</p>
@@ -76,7 +93,7 @@ function App() {
               <div className='flex justify-between items-center mb-10'>
                 <p className="text-white font-semibold text-xl">Transactions</p>
                 <div className='flex items-center'>
-                  <p className="text-[#577bbe] mr-2">View all</p>
+                  <p className="text-[#577bbe] mr-2 cursor-pointer">View all</p>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="#577bbe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
               </div>
@@ -116,13 +133,17 @@ function App() {
           </div>
           <div className="sm:col-span-3 w-full mt-6 sm:mt-0">
             <div className="h-[280px] flex flex-col border-b border-gray-600 justify-center px-3 sm:pr-6">
-              <div className="flex">
-                <div className='h-[250px] bg-[#fad898] rounded-l-lg w-[75%]'>
-                  <p className='text-black text-3xl pt-6 pl-4 sm:pl-10 font-bold'>Experience True <br /> DIgital Banking <br /> Experience</p>
+              <div className="flex h-[250px]">
+                <div className='bg-[#fad898] h-full rounded-l-lg w-[75%]'>
+                  <p className='text-black text-3xl h-full pt-6 pl-4 whitespace-normal sm:pl-10 font-bold'>Experience True <br /> Digital Banking <br /> Experience</p>
                 </div>
-                <div className='h-[250px] bg-[#fcedce] rounded-r-lg w-[25%] relative'>
-                  <svg className='mt-9 sm:mt-8 ml-6 ' xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="black" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                  <svg className='absolute -left-10 bottom-5 sm:bottom-9' xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg>
+                <div className='bg-[#fcedce] rounded-r-lg flex-1 relative'>
+                  <div className="mt-9 ml-6 sm:mt-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="black" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                  <div className='absolute -left-10 bottom-5 sm:bottom-9 z-50'>
+                    <svg className='' xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,7 +151,7 @@ function App() {
               <div className='flex justify-between items-center mb-10'>
                 <p className="text-white font-semibold text-xl">Subscriptions</p>
                 <div className='flex items-center'>
-                  <p className="text-[#577bbe] mr-2">View all</p>
+                  <p className="text-[#577bbe] mr-2 cursor-pointer">View all</p>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="#577bbe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
               </div>
